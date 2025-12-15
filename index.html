@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Письмо Деду Морозу ❄️</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Снежинки */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1em;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0 5px #fff;
+      z-index: 9999;
+      user-select: none;
+      pointer-events: none;
+      animation: snowfall linear infinite;
+    }
+
+    @keyframes snowfall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.3;
+      }
+    }
+
+    .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
+    .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 1s; }
+    .snowflake:nth-child(3) { left: 30%; animation-duration: 8s; animation-delay: 2s; }
+    .snowflake:nth-child(4) { left: 40%; animation-duration: 14s; animation-delay: 0.5s; }
+    .snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 1.5s; }
+    .snowflake:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 3s; }
+    .snowflake:nth-child(7) { left: 70%; animation-duration: 13s; animation-delay: 0.2s; }
+    .snowflake:nth-child(8) { left: 80%; animation-duration: 10s; animation-delay: 2.5s; }
+    .snowflake:nth-child(9) { left: 90%; animation-duration: 12s; animation-delay: 1.8s; }
+    .snowflake:nth-child(10) { left: 5%; animation-duration: 15s; animation-delay: 0.8s; }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .letter-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+      animation: slideIn 0.8s ease-out;
+      position: relative;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #c62828 0%, #e53935 100%);
+      padding: 30px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '❄️';
+      position: absolute;
+      font-size: 100px;
+      opacity: 0.1;
+      top: -20px;
+      right: -20px;
+      animation: rotate 20s linear infinite;
+    }
+
+    .header::after {
+      content: '🎄';
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.1;
+      bottom: -20px;
+      left: -20px;
+      animation: rotate 15s linear infinite reverse;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #fff;
+      font-size: 28px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1::before {
+      content: '✨ ';
+    }
+
+    .header h1::after {
+      content: ' ✨';
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
+    .content {
+      padding: 30px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .greeting {
+      font-size: 18px;
+      margin: 0 0 20px 0;
+      color: #c62828;
+      font-weight: bold;
+    }
+
+    .intro {
+      margin: 0 0 30px 0;
+      background: linear-gradient(120deg, #ffeaa7 0%, #fdcb6e 100%);
+      padding: 20px;
+      border-radius: 15px;
+      border-left: 5px solid #e17055;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      color: #c62828;
+      font-size: 18px;
+      margin: 25px 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '🎁';
+      font-size: 24px;
+    }
+
+    .wishes-list {
+      background: linear-gradient(120deg, #a8e6cf 0%, #dcedc8 100%);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      border-left: 5px solid #27ae60;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .promises-list {
+      background: linear-gradient(120deg, #ffd3b6 0%, #ffaaa5 100%);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      border-left: 5px solid #e74c3c;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .wishes-list li,
+    .promises-list li {
+      margin: 10px 0;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .wishes-list li::before {
+      content: '⭐';
+      position: absolute;
+      left: -15px;
+    }
+
+    .promises-list li::before {
+      content: '💪';
+      position: absolute;
+      left: -15px;
+    }
+
+    .closing {
+      margin: 30px 0 0 0;
+      background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      padding: 20px;
+      border-radius: 15px;
+      font-style: italic;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8eaf6 100%);
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+      border-top: 3px dashed #c62828;
+    }
+
+    .footer::before {
+      content: '🎅 ';
+    }
+
+    /* Адаптивность */
+    @media (max-width: 640px) {
+      .container {
+        padding: 10px;
+      }
+
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .content {
+        padding: 20px 15px;
+        font-size: 15px;
+      }
+
+      .greeting {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 16px;
+      }
+
+      .intro,
+      .wishes-list,
+      .promises-list,
+      .closing {
+        padding: 15px;
+      }
+
+      .snowflake {
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .header h1 {
+        font-size: 18px;
+      }
+
+      .content {
+        padding: 15px 10px;
+        font-size: 14px;
+      }
+
+      .section-title {
+        font-size: 15px;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin: 12px 0;
+      padding-left: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Снежинки -->
+<div class="snowflake">❄</div>
+<div class="snowflake">❅</div>
+<div class="snowflake">❆</div>
+<div class="snowflake">❄</div>
+<div class="snowflake">❅</div>
+<div class="snowflake">❆</div>
+<div class="snowflake">❄</div>
+<div class="snowflake">❅</div>
+<div class="snowflake">❆</div>
+<div class="snowflake">❄</div>
+
+<div class="container">
+  <div class="letter-card">
+    <div class="header">
+      <h1>Письмо Деду <span class="strikethrough">Максиму</span> Морозу</h1>
+    </div>
+
+    <div class="content">
+      <p class="greeting">
+        Здравствуй, дорогой Дедушка Мороз!
+      </p>
+
+      <div class="intro">
+        В этом году я сильно преуспел в количестве заказов и профессиональных навыках, стал более ответственным и сконцентрированным, в общем, хачу подарков за это
+      </div>
+
+      <div class="section-title">В следующем году я хочу:</div>
+      <div class="wishes-list">
+        <ul>
+          <li>Не давить дедлайны, а сдавать всё заранее</li>
+          <li>Подтянуться на турнике 10 раз</li>
+          <li>Похудеть на 10 кг</li>
+          <li>Жениться</li>
+          <li>Накопить на компьютер</li>
+        </ul>
+      </div>
+
+      <div class="section-title" style="margin-top: 30px;">Я обещаю, что в следующем году:</div>
+      <div class="promises-list">
+        <ul>
+          <li>Я буду больше работать</li>
+          <li>Чаще гулять</li>
+          <li>Перестану кормить заказчиков завтраками</li>
+          <li>Обучусь чему-нибудь новому</li>
+        </ul>
+      </div>
+
+      <div class="closing">
+        Спасибо тебе за праздник и чудеса!
+        Очень жду Новый год 🎊
+      </div>
+    </div>
+
+    <div class="footer">
+      Извиняюсь за такое скудное письмо, очень надеюсь, что прокатит :3
+    </div>
+  </div>
+</div>
+
+
+
+</body></html>
